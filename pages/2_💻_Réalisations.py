@@ -157,38 +157,38 @@ with st.container(border=True):
 
 st.divider()
 
-# Projet 5 - Alla2
+# Projet 5 - Alla2 ✅ DÉMO ACTIVE
 with st.container(border=True):
     col1, col2 = st.columns([2, 1])
 
     with col1:
-        st.subheader("📈 Prédiction de Séries Temporelles")
-        st.caption("Projet Personnel | Time Series - Trading")
+        st.subheader("📈 Prédiction Trading BTC")
+        st.caption("Projet Personnel | Time Series - Trading | ✅ Démo disponible")
 
         st.markdown("""
-        **Contexte :** Modèle de prédiction pour séries temporelles financières.
+        **Contexte :** Prédiction de la direction du prix Bitcoin (hausse/baisse).
 
         **Approche :**
-        - Feature engineering temporel
-        - Modèles : XGBoost, LSTM, Prophet
-        - Backtesting et évaluation de performance
+        - 20+ indicateurs techniques (RSI, MACD, Bollinger, etc.)
+        - XGBoost Classifier optimisé
+        - Métrique personnalisée "earn_metric"
 
-        **Stack :** Python, XGBoost, TensorFlow, Pandas
+        **Stack :** Python, XGBoost, scikit-learn, Pandas
         """)
 
         col_btn1, col_btn2 = st.columns(2)
         with col_btn1:
-            st.button("🎮 Démo interactive", key="demo_alla2", type="primary", disabled=True)
+            st.page_link("pages/9_📈_Alla2_Trading.py", label="🎮 Démo interactive", icon="📈")
         with col_btn2:
-            st.link_button("📂 Code GitHub", "https://github.com/", disabled=True)
+            st.link_button("📂 Code GitHub", "https://github.com/ThomasMeb/tradebtcai")
 
     with col2:
-        st.metric("Direction Accuracy", "58%", delta="+8% vs random")
-        st.metric("Sharpe Ratio", "1.2")
-        st.progress(58, text="Précision directionnelle")
+        st.metric("Accuracy", "61%", delta="+11% vs random")
+        st.metric("Earn Metric", "1.10")
+        st.progress(61, text="Précision directionnelle")
 
 st.divider()
 
 # Footer
-st.success("✅ **4 démos actives** : Schneider Energy + BackMarket + StackOverflow + SantéVet")
-st.info("💡 **En cours :** Projet Alla2 Trading à venir.")
+st.success("✅ **5 démos actives** : Tous les projets ML sont maintenant disponibles!")
+st.info("💡 **Tip :** Utilisez le menu latéral pour accéder aux démos interactives.")

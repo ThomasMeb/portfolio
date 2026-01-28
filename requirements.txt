@@ -6,25 +6,18 @@ streamlit>=1.28.0
 pandas>=2.0.0
 numpy>=1.24.0
 
-# Visualization (pour les projets ML)
+# Visualization
 plotly>=5.15.0
 matplotlib>=3.7.0
 seaborn>=0.12.0
 
-# ML - P3 Schneider Energy Prediction
+# ML - All projects
 scikit-learn>=1.3.0
 joblib>=1.3.0
-shap>=0.42.0
 
-# ML (autres projets - à activer selon besoin)
-# xgboost>=2.0.0
-# tensorflow>=2.13.0
-# torch>=2.0.0
-# transformers>=4.30.0
-
-# Utilities
+# Image processing (P6 SantéVet)
 pillow>=10.0.0
-# opencv-python-headless>=4.8.0  # Version headless pour HF Spaces
 
-# Optional - pour le formulaire de contact
-# python-dotenv>=1.0.0
+# Note: Heavy dependencies (tensorflow, torch, transformers) are NOT included
+# The portfolio uses demo modes with simulated predictions
+# Full models are available in the individual project repositories
