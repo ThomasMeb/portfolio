@@ -37,6 +37,8 @@ Thumbs.db
 # Large models should use Git LFS or be downloaded at runtime
 !models/
 !models/**/*.joblib
+!models/**/*.pkl
+!models/**/*.csv
 *.pt
 *.pth
 *.onnx

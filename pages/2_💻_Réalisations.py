@@ -58,13 +58,13 @@ with st.container(border=True):
 
 st.divider()
 
-# Projet 2 - P4 BackMarket
+# Projet 2 - P4 BackMarket ✅ DÉMO ACTIVE
 with st.container(border=True):
     col1, col2 = st.columns([2, 1])
 
     with col1:
         st.subheader("👥 Segmentation Client RFM")
-        st.caption("Back Market | Clustering")
+        st.caption("Back Market | Clustering | ✅ Démo disponible")
 
         st.markdown("""
         **Contexte :** Segmentation de la base clients de Back Market
@@ -72,22 +72,22 @@ with st.container(border=True):
 
         **Approche :**
         - Analyse RFM (Récence, Fréquence, Montant)
-        - Clustering avec KMeans et DBSCAN
-        - Visualisation des segments avec t-SNE
+        - Clustering avec KMeans (k=4 optimisé)
+        - Visualisation 3D interactive des segments
 
         **Stack :** Python, Scikit-learn, Pandas, Plotly, Streamlit
         """)
 
         col_btn1, col_btn2 = st.columns(2)
         with col_btn1:
-            st.button("🎮 Démo interactive", key="demo_p4", type="primary", disabled=True)
+            st.page_link("pages/6_👥_BackMarket_Segmentation.py", label="🎮 Démo interactive", icon="👥")
         with col_btn2:
-            st.link_button("📂 Code GitHub", "https://github.com/", disabled=True)
+            st.link_button("📂 Code GitHub", "https://github.com/ThomasMeb/P4-backmarket-segmentation")
 
     with col2:
-        st.metric("Segments", "5", delta="identifiés")
-        st.metric("Silhouette Score", "0.72")
-        st.progress(72, text="Qualité du clustering")
+        st.metric("Clients", "95K", delta="segmentés")
+        st.metric("Silhouette Score", "0.49")
+        st.progress(49, text="Qualité du clustering")
 
 st.divider()
 
@@ -190,5 +190,5 @@ with st.container(border=True):
 st.divider()
 
 # Footer
-st.success("✅ **1 démo active** : Schneider Energy Prediction")
+st.success("✅ **2 démos actives** : Schneider Energy + BackMarket Segmentation")
 st.info("💡 **En cours :** Les autres démos seront activées progressivement.")

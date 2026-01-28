@@ -96,6 +96,7 @@ with st.sidebar:
 
     st.markdown("### 🎮 Démos Actives")
     st.page_link("pages/5_🔋_Schneider_Energy.py", label="Schneider Energy", icon="🔋")
+    st.page_link("pages/6_👥_BackMarket_Segmentation.py", label="BackMarket Segment.", icon="👥")
 
     st.divider()
 
@@ -158,9 +159,9 @@ def main():
     with col2:
         with st.container(border=True):
             st.subheader("👥 Segmentation Client")
-            st.caption("Back Market | Clustering")
+            st.caption("Back Market | Clustering | ✅ Démo active")
             st.markdown("Segmentation RFM avec KMeans")
-            st.button("Explorer →", key="p4", disabled=True)
+            st.page_link("pages/6_👥_BackMarket_Segmentation.py", label="Explorer →", icon="👥")
 
         with st.container(border=True):
             st.subheader("🐕 Classification Races")
