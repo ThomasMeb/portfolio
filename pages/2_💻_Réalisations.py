@@ -91,13 +91,13 @@ with st.container(border=True):
 
 st.divider()
 
-# Projet 3 - P5 StackOverflow
+# Projet 3 - P5 StackOverflow ✅ DÉMO ACTIVE
 with st.container(border=True):
     col1, col2 = st.columns([2, 1])
 
     with col1:
         st.subheader("🏷️ Suggestion de Tags NLP")
-        st.caption("Stack Overflow | NLP - Classification Multi-label")
+        st.caption("Stack Overflow | NLP - Classification Multi-label | ✅ Démo disponible")
 
         st.markdown("""
         **Contexte :** Système de suggestion automatique de tags
@@ -113,14 +113,14 @@ with st.container(border=True):
 
         col_btn1, col_btn2 = st.columns(2)
         with col_btn1:
-            st.button("🎮 Démo interactive", key="demo_p5", type="primary", disabled=True)
+            st.page_link("pages/7_🏷️_StackOverflow_NLP.py", label="🎮 Démo interactive", icon="🏷️")
         with col_btn2:
-            st.link_button("📂 Code GitHub", "https://github.com/", disabled=True)
+            st.link_button("📂 Code GitHub", "https://github.com/ThomasMeb/P5-stackoverflow-nlp-tags")
 
     with col2:
-        st.metric("F1 Score", "0.68", delta="+12% vs baseline")
-        st.metric("Recall@5", "0.85")
-        st.progress(85, text="Tags pertinents")
+        st.metric("Precision@5", "78%", delta="+8% vs baseline")
+        st.metric("Recall@5", "62%")
+        st.progress(78, text="Tags pertinents")
 
 st.divider()
 
@@ -190,5 +190,5 @@ with st.container(border=True):
 st.divider()
 
 # Footer
-st.success("✅ **2 démos actives** : Schneider Energy + BackMarket Segmentation")
+st.success("✅ **3 démos actives** : Schneider Energy + BackMarket Segmentation + StackOverflow NLP")
 st.info("💡 **En cours :** Les autres démos seront activées progressivement.")

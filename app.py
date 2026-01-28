@@ -97,6 +97,7 @@ with st.sidebar:
     st.markdown("### 🎮 Démos Actives")
     st.page_link("pages/5_🔋_Schneider_Energy.py", label="Schneider Energy", icon="🔋")
     st.page_link("pages/6_👥_BackMarket_Segmentation.py", label="BackMarket Segment.", icon="👥")
+    st.page_link("pages/7_🏷️_StackOverflow_NLP.py", label="StackOverflow NLP", icon="🏷️")
 
     st.divider()
 
@@ -152,9 +153,9 @@ def main():
 
         with st.container(border=True):
             st.subheader("🏷️ NLP Tag Suggestion")
-            st.caption("Stack Overflow | NLP")
+            st.caption("Stack Overflow | NLP | ✅ Démo active")
             st.markdown("Classification multi-label avec BERT/USE")
-            st.button("Explorer →", key="p5", disabled=True)
+            st.page_link("pages/7_🏷️_StackOverflow_NLP.py", label="Explorer →", icon="🏷️")
 
     with col2:
         with st.container(border=True):
