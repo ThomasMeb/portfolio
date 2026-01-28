@@ -25,36 +25,36 @@ with col2:
 
 st.divider()
 
-# Projet 1 - P3 Schneider
+# Projet 1 - P3 Schneider ✅ DÉMO ACTIVE
 with st.container(border=True):
     col1, col2 = st.columns([2, 1])
 
     with col1:
         st.subheader("🔋 Prédiction de Consommation Énergétique")
-        st.caption("Schneider Electric | Régression")
+        st.caption("Schneider Electric | Régression | ✅ Démo disponible")
 
         st.markdown("""
-        **Contexte :** Projet réalisé pour Schneider Electric visant à prédire
-        la consommation énergétique de bâtiments.
+        **Contexte :** Mission freelance pour Schneider Electric - prédiction de
+        consommation énergétique et émissions CO2 du parc immobilier tertiaire.
 
         **Approche :**
-        - Feature engineering avancé (données temporelles, météo)
-        - Modèles : XGBoost, Random Forest, Linear Regression
-        - Optimisation des hyperparamètres avec GridSearchCV
+        - Feature engineering sur 47 variables (34% valeurs manquantes traitées)
+        - 18 modèles comparés (Random Forest champion)
+        - Interprétabilité avec SHAP values
 
-        **Stack :** Python, Scikit-learn, XGBoost, Pandas, Streamlit
+        **Stack :** Python, Scikit-learn, XGBoost, SHAP, Streamlit
         """)
 
         col_btn1, col_btn2 = st.columns(2)
         with col_btn1:
-            st.button("🎮 Démo interactive", key="demo_p3", type="primary", disabled=True)
+            st.page_link("pages/5_🔋_Schneider_Energy.py", label="🎮 Démo interactive", icon="🔋")
         with col_btn2:
-            st.link_button("📂 Code GitHub", "https://github.com/", disabled=True)
+            st.link_button("📂 Code GitHub", "https://github.com/ThomasMeb/P3-schneider-energy-prediction")
 
     with col2:
-        st.metric("RMSE", "0.12", delta="-15% vs baseline")
-        st.metric("R²", "0.94")
-        st.progress(94, text="Précision du modèle")
+        st.metric("Amélioration", "+45.5%", delta="vs baseline")
+        st.metric("Bâtiments analysés", "1,650")
+        st.progress(83, text="R² = 0.83")
 
 st.divider()
 
@@ -190,4 +190,5 @@ with st.container(border=True):
 st.divider()
 
 # Footer
-st.info("💡 **Note :** Les démos interactives seront activées progressivement. Chaque projet sera enrichi avec des visualisations et des démonstrations en temps réel.")
+st.success("✅ **1 démo active** : Schneider Energy Prediction")
+st.info("💡 **En cours :** Les autres démos seront activées progressivement.")

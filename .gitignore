@@ -29,13 +29,14 @@ Thumbs.db
 *.csv
 *.parquet
 *.pkl
-*.joblib
 *.h5
 *.hdf5
 !sample_*.csv
 
-# Models (too large for git)
-models/
+# Models - keep portfolio models (small enough for HF Spaces)
+# Large models should use Git LFS or be downloaded at runtime
+!models/
+!models/**/*.joblib
 *.pt
 *.pth
 *.onnx

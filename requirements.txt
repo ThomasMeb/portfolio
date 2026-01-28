@@ -11,8 +11,12 @@ plotly>=5.15.0
 matplotlib>=3.7.0
 seaborn>=0.12.0
 
-# ML (à ajouter selon les projets intégrés)
-# scikit-learn>=1.3.0
+# ML - P3 Schneider Energy Prediction
+scikit-learn>=1.3.0
+joblib>=1.3.0
+shap>=0.42.0
+
+# ML (autres projets - à activer selon besoin)
 # xgboost>=2.0.0
 # tensorflow>=2.13.0
 # torch>=2.0.0

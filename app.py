@@ -94,6 +94,11 @@ with st.sidebar:
 
     st.divider()
 
+    st.markdown("### 🎮 Démos Actives")
+    st.page_link("pages/5_🔋_Schneider_Energy.py", label="Schneider Energy", icon="🔋")
+
+    st.divider()
+
     st.markdown("### Liens")
     st.markdown("[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/)")
     st.markdown("[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/)")
@@ -140,9 +145,9 @@ def main():
     with col1:
         with st.container(border=True):
             st.subheader("🔋 Prédiction Énergétique")
-            st.caption("Schneider Electric | Régression")
-            st.markdown("Prédiction de consommation énergétique avec XGBoost")
-            st.button("Explorer →", key="p3", disabled=True)
+            st.caption("Schneider Electric | Régression | ✅ Démo active")
+            st.markdown("Prédiction de consommation énergétique avec Random Forest")
+            st.page_link("pages/5_🔋_Schneider_Energy.py", label="Explorer →", icon="🔋")
 
         with st.container(border=True):
             st.subheader("🏷️ NLP Tag Suggestion")
