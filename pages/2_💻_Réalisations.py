@@ -124,36 +124,36 @@ with st.container(border=True):
 
 st.divider()
 
-# Projet 4 - P6 SantéVet
+# Projet 4 - P6 SantéVet ✅ DÉMO ACTIVE
 with st.container(border=True):
     col1, col2 = st.columns([2, 1])
 
     with col1:
         st.subheader("🐕 Classification de Races de Chiens")
-        st.caption("SantéVet | Computer Vision - Deep Learning")
+        st.caption("SantéVet | Computer Vision - Deep Learning | ✅ Démo disponible")
 
         st.markdown("""
         **Contexte :** Classification automatique de races de chiens
-        pour l'application mobile SantéVet.
+        pour l'application mobile SantéVet (LPA).
 
         **Approche :**
         - Transfer Learning avec ResNet50V2
         - Fine-tuning sur Stanford Dogs Dataset (120 races)
-        - Data augmentation et régularisation
+        - Classificateur SVM sur features 2048-dim
 
-        **Stack :** Python, TensorFlow/Keras, OpenCV, Streamlit
+        **Stack :** Python, TensorFlow/Keras, scikit-learn, Streamlit
         """)
 
         col_btn1, col_btn2 = st.columns(2)
         with col_btn1:
-            st.button("🎮 Démo interactive", key="demo_p6", type="primary", disabled=True)
+            st.page_link("pages/8_🐕_SanteVet_Dogs.py", label="🎮 Démo interactive", icon="🐕")
         with col_btn2:
-            st.link_button("📂 Code GitHub", "https://github.com/", disabled=True)
+            st.link_button("📂 Code GitHub", "https://github.com/ThomasMeb/P6-santevet-dog-classification")
 
     with col2:
-        st.metric("Accuracy", "87%", delta="Top-1")
-        st.metric("Top-5 Accuracy", "96%")
-        st.progress(96, text="Précision Top-5")
+        st.metric("Top-1 Accuracy", "87%")
+        st.metric("Top-3 Accuracy", "96%")
+        st.progress(87, text="Précision Top-1")
 
 st.divider()
 
@@ -190,5 +190,5 @@ with st.container(border=True):
 st.divider()
 
 # Footer
-st.success("✅ **3 démos actives** : Schneider Energy + BackMarket Segmentation + StackOverflow NLP")
-st.info("💡 **En cours :** Les autres démos seront activées progressivement.")
+st.success("✅ **4 démos actives** : Schneider Energy + BackMarket + StackOverflow + SantéVet")
+st.info("💡 **En cours :** Projet Alla2 Trading à venir.")

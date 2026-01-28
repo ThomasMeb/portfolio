@@ -98,6 +98,7 @@ with st.sidebar:
     st.page_link("pages/5_🔋_Schneider_Energy.py", label="Schneider Energy", icon="🔋")
     st.page_link("pages/6_👥_BackMarket_Segmentation.py", label="BackMarket Segment.", icon="👥")
     st.page_link("pages/7_🏷️_StackOverflow_NLP.py", label="StackOverflow NLP", icon="🏷️")
+    st.page_link("pages/8_🐕_SanteVet_Dogs.py", label="SantéVet Dogs", icon="🐕")
 
     st.divider()
 
@@ -166,9 +167,9 @@ def main():
 
         with st.container(border=True):
             st.subheader("🐕 Classification Races")
-            st.caption("SantéVet | Computer Vision")
+            st.caption("SantéVet | Computer Vision | ✅ Démo active")
             st.markdown("Classification d'images avec ResNet50V2")
-            st.button("Explorer →", key="p6", disabled=True)
+            st.page_link("pages/8_🐕_SanteVet_Dogs.py", label="Explorer →", icon="🐕")
 
     st.divider()
 
