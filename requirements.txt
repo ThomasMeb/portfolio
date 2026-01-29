@@ -1,23 +1,10 @@
 # Portfolio Streamlit - Dependencies
 # For Hugging Face Spaces deployment
 
-# Core
 streamlit>=1.28.0
 pandas>=2.0.0
 numpy>=1.24.0
-
-# Visualization
 plotly>=5.15.0
-matplotlib>=3.7.0
-seaborn>=0.12.0
-
-# ML - All projects
 scikit-learn>=1.3.0
 joblib>=1.3.0
-
-# Image processing (P6 SantéVet)
 pillow>=10.0.0
-
-# Note: Heavy dependencies (tensorflow, torch, transformers) are NOT included
-# The portfolio uses demo modes with simulated predictions
-# Full models are available in the individual project repositories
