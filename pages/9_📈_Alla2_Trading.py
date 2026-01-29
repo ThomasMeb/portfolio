@@ -9,8 +9,7 @@ import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
-from datetime import datetime, timedelta
-import random
+from datetime import datetime
 
 st.set_page_config(
     page_title="Alla2 Trading | Portfolio",

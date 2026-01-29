@@ -67,7 +67,7 @@ def load_models():
         models['kmeans'] = joblib.load(model_dir / "kmeans_model.pkl")
         models['scaler'] = joblib.load(model_dir / "scaler.pkl")
         return models
-    except Exception as e:
+    except Exception:
         return None
 
 @st.cache_data
@@ -76,7 +76,7 @@ def load_sample_data():
     try:
         df = pd.read_csv("models/p4_backmarket/sample_rfm.csv")
         return df
-    except:
+    except Exception:
         return None
 
 def predict_segment(models, recency, frequency, monetary):

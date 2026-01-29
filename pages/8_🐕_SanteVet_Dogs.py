@@ -4,13 +4,10 @@ Demo interactive de classification de races de chiens avec Deep Learning
 """
 
 import streamlit as st
-import numpy as np
 import random
 import hashlib
-import plotly.express as px
 import plotly.graph_objects as go
 from PIL import Image
-import io
 
 st.set_page_config(
     page_title="SantéVet Dog Classification | Portfolio",

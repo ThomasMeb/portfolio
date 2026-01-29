@@ -4,11 +4,8 @@ Demo interactive de classification multi-label pour tags
 """
 
 import streamlit as st
-import pandas as pd
-import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
-import re
 from collections import Counter
 
 st.set_page_config(

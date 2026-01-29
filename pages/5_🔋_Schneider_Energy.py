@@ -5,7 +5,6 @@ Démo interactive de prédiction énergétique
 
 import streamlit as st
 import pandas as pd
-import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
 from pathlib import Path
@@ -34,7 +33,7 @@ def load_models():
         models['co2_model'] = joblib.load(model_dir / "co2_model.joblib")
         models['co2_scaler'] = joblib.load(model_dir / "co2_scaler.joblib")
         return models
-    except Exception as e:
+    except Exception:
         return None
 
 def prepare_features(property_gfa, floors, age, energy_star, building_type, feature_names):
