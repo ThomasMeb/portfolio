@@ -1,13 +1,3 @@
----
-title: Thomas Portfolio
-emoji: 🚀
-colorFrom: blue
-colorTo: purple
-sdk: docker
-pinned: false
-license: mit
----
-
 # 🚀 Portfolio Thomas - ML Engineer & Entrepreneur
 
 Bienvenue sur mon portfolio interactif présentant mes réalisations en **Machine Learning** et **Data Science**.
@@ -38,7 +28,7 @@ Bienvenue sur mon portfolio interactif présentant mes réalisations en **Machin
 - **CV**: ResNet50V2, EfficientNet, Transfer Learning
 - **Data**: Pandas, NumPy, SQL
 - **Viz**: Plotly, Matplotlib, Streamlit
-- **Deploy**: Hugging Face Spaces, Docker, FastAPI
+- **Deploy**: Streamlit Cloud, Docker, FastAPI
 
 ## 📁 Structure
 
@@ -78,4 +68,4 @@ streamlit run app.py
 
 ---
 
-*Built with Streamlit | Deployed on Hugging Face Spaces*
+*Built with Streamlit | Deployed on Streamlit Cloud*
