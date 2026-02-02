@@ -79,7 +79,7 @@ st.markdown("""
 
 # Sidebar
 with st.sidebar:
-    st.image("https://via.placeholder.com/150x150.png?text=TH", width=100)
+    st.image("assets/photo_thomas.png", width=100)
     st.title("Thomas")
     st.caption("ML Engineer & Entrepreneur")
 
@@ -104,8 +104,8 @@ with st.sidebar:
     st.divider()
 
     st.markdown("### Liens")
-    st.markdown("[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/)")
-    st.markdown("[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/)")
+    st.markdown("[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/ThomasMeb)")
+    st.markdown("[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/thomasmebarki)")
 
 # Page principale - Landing
 def main():
@@ -137,7 +137,7 @@ def main():
         st.link_button("Découvrir egir.app →", "https://egir.app", type="primary")
 
     with col2:
-        st.image("https://via.placeholder.com/300x200.png?text=egir.app", use_container_width=True)
+        st.image("assets/egir_logo.png", use_container_width=True)
 
     st.divider()
 
