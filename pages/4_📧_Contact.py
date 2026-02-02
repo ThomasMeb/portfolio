@@ -3,12 +3,15 @@ Page Contact
 """
 
 import streamlit as st
+from components import render_sidebar
 
 st.set_page_config(
     page_title="Contact | Thomas Portfolio",
     page_icon="📧",
     layout="wide"
 )
+
+render_sidebar()
 
 st.title("📧 Contact")
 st.caption("Restons en contact !")
@@ -29,17 +32,17 @@ with col1:
     """)
 
     st.subheader("📬 Email")
-    st.code("contact@example.com", language=None)
+    st.code("thomas.mebarki@protonmail.com", language=None)
 
     st.subheader("🔗 Réseaux")
 
     col_a, col_b, col_c = st.columns(3)
 
     with col_a:
-        st.link_button("LinkedIn", "https://linkedin.com/", use_container_width=True)
+        st.link_button("LinkedIn", "https://linkedin.com/in/thomasmebarki", use_container_width=True)
 
     with col_b:
-        st.link_button("GitHub", "https://github.com/", use_container_width=True)
+        st.link_button("GitHub", "https://github.com/ThomasMeb", use_container_width=True)
 
     with col_c:
         st.link_button("egir.app", "https://egir.app", use_container_width=True)

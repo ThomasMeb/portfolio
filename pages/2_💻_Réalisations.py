@@ -3,12 +3,15 @@ Page Réalisations - Projets ML/Data Science
 """
 
 import streamlit as st
+from components import render_sidebar
 
 st.set_page_config(
     page_title="Réalisations | Thomas Portfolio",
     page_icon="💻",
     layout="wide"
 )
+
+render_sidebar()
 
 st.title("💻 Réalisations ML/Data Science")
 st.caption("Projets démontrant mes compétences en Machine Learning et Data Science")

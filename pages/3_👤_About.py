@@ -3,12 +3,15 @@ Page About - Parcours et compétences
 """
 
 import streamlit as st
+from components import render_sidebar
 
 st.set_page_config(
     page_title="About | Thomas Portfolio",
     page_icon="👤",
     layout="wide"
 )
+
+render_sidebar()
 
 st.title("👤 À Propos de Moi")
 st.caption("ML Engineer & Entrepreneur")

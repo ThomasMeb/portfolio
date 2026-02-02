@@ -2,4 +2,6 @@
 Composants réutilisables pour le portfolio
 """
 
-# Les composants seront ajoutés au fur et à mesure de l'intégration des projets
+from components.sidebar import render_sidebar
+
+__all__ = ["render_sidebar"]

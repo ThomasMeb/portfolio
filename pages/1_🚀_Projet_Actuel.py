@@ -3,12 +3,15 @@ Page Projet Actuel - egir.app
 """
 
 import streamlit as st
+from components import render_sidebar
 
 st.set_page_config(
     page_title="Projet Actuel | Thomas Portfolio",
     page_icon="🚀",
     layout="wide"
 )
+
+render_sidebar()
 
 st.title("🚀 Projet Actuel : egir.app")
 st.caption("SaaS de gestion pour restaurateurs avec IA intégrée")
@@ -44,8 +47,8 @@ with col1:
     """)
 
 with col2:
-    st.image("https://via.placeholder.com/400x300.png?text=egir.app+Dashboard", use_container_width=True)
-    st.caption("Dashboard egir.app")
+    st.image("assets/egir_logo.png", use_container_width=True)
+    st.caption("egir.app - La clarté sur vos marges")
 
 st.divider()
 
