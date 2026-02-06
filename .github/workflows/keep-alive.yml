@@ -1,0 +1,20 @@
+name: Keep Alive
+
+on:
+  schedule:
+    # Ping toutes les 6 heures
+    - cron: '0 */6 * * *'
+  workflow_dispatch: # Permet un déclenchement manuel
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Streamlit app
+        run: |
+          response=$(curl -s -o /dev/null -w "%{http_code}" https://thomasmebarki.streamlit.app)
+          echo "Status: $response"
+          if [ "$response" -ge 500 ]; then
+            echo "::warning::App returned $response"
+            exit 1
+          fi
