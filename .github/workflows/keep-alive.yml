@@ -2,8 +2,8 @@ name: Keep Alive
 
 on:
   schedule:
-    # Ping toutes les 6 heures
-    - cron: '0 */6 * * *'
+    # Ping toutes les 4 heures (sleep timeout = 12h)
+    - cron: '0 */4 * * *'
   workflow_dispatch: # Permet un déclenchement manuel
 
 jobs:
