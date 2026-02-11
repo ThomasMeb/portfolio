@@ -50,7 +50,7 @@ with st.container(border=True):
 
         col_btn1, col_btn2 = st.columns(2)
         with col_btn1:
-            st.page_link("pages/5_🔋_Schneider_Energy.py", label="🎮 Démo interactive", icon="🔋")
+            st.page_link("pages/5_Schneider_Energy.py", label="🎮 Démo interactive", icon="🔋")
         with col_btn2:
             st.link_button("📂 Code GitHub", "https://github.com/ThomasMeb/P3-schneider-energy-prediction")
 
@@ -83,7 +83,7 @@ with st.container(border=True):
 
         col_btn1, col_btn2 = st.columns(2)
         with col_btn1:
-            st.page_link("pages/6_👥_BackMarket_Segmentation.py", label="🎮 Démo interactive", icon="👥")
+            st.page_link("pages/6_BackMarket_Segmentation.py", label="🎮 Démo interactive", icon="👥")
         with col_btn2:
             st.link_button("📂 Code GitHub", "https://github.com/ThomasMeb/P4-backmarket-segmentation")
 
@@ -116,7 +116,7 @@ with st.container(border=True):
 
         col_btn1, col_btn2 = st.columns(2)
         with col_btn1:
-            st.page_link("pages/7_🏷️_StackOverflow_NLP.py", label="🎮 Démo interactive", icon="🏷️")
+            st.page_link("pages/7_StackOverflow_NLP.py", label="🎮 Démo interactive", icon="🏷️")
         with col_btn2:
             st.link_button("📂 Code GitHub", "https://github.com/ThomasMeb/P5-stackoverflow-nlp-tags")
 
@@ -149,7 +149,7 @@ with st.container(border=True):
 
         col_btn1, col_btn2 = st.columns(2)
         with col_btn1:
-            st.page_link("pages/8_🐕_SanteVet_Dogs.py", label="🎮 Démo interactive", icon="🐕")
+            st.page_link("pages/8_SanteVet_Dogs.py", label="🎮 Démo interactive", icon="🐕")
         with col_btn2:
             st.link_button("📂 Code GitHub", "https://github.com/ThomasMeb/P6-santevet-dog-classification")
 
@@ -181,7 +181,7 @@ with st.container(border=True):
 
         col_btn1, col_btn2 = st.columns(2)
         with col_btn1:
-            st.page_link("pages/9_📈_Alla2_Trading.py", label="🎮 Démo interactive", icon="📈")
+            st.page_link("pages/9_Alla2_Trading.py", label="🎮 Démo interactive", icon="📈")
         with col_btn2:
             st.link_button("📂 Code GitHub", "https://github.com/ThomasMeb/tradebtcai")
 
@@ -215,7 +215,7 @@ with st.container(border=True):
 
         col_btn1, col_btn2 = st.columns(2)
         with col_btn1:
-            st.page_link("pages/10_🤖_Job_Agent.py", label="Voir le projet", icon="🤖")
+            st.page_link("pages/10_Job_Agent.py", label="Voir le projet", icon="🤖")
         with col_btn2:
             st.link_button("Code GitHub", "https://github.com/ThomasMeb/job-agent")
 

@@ -87,20 +87,20 @@ with st.sidebar:
 
     st.markdown("### Navigation")
     st.page_link("app.py", label="🏠 Accueil", icon="🏠")
-    st.page_link("pages/1_🚀_Projet_Actuel.py", label="Projet Actuel", icon="🚀")
-    st.page_link("pages/2_💻_Réalisations.py", label="Réalisations", icon="💻")
-    st.page_link("pages/3_👤_About.py", label="About", icon="👤")
-    st.page_link("pages/4_📧_Contact.py", label="Contact", icon="📧")
+    st.page_link("pages/1_Projet_Actuel.py", label="Projet Actuel", icon="🚀")
+    st.page_link("pages/2_Realisations.py", label="Réalisations", icon="💻")
+    st.page_link("pages/3_About.py", label="About", icon="👤")
+    st.page_link("pages/4_Contact.py", label="Contact", icon="📧")
 
     st.divider()
 
     st.markdown("### 🎮 Démos Actives")
-    st.page_link("pages/5_🔋_Schneider_Energy.py", label="Schneider Energy", icon="🔋")
-    st.page_link("pages/6_👥_BackMarket_Segmentation.py", label="BackMarket Segment.", icon="👥")
-    st.page_link("pages/7_🏷️_StackOverflow_NLP.py", label="StackOverflow NLP", icon="🏷️")
-    st.page_link("pages/8_🐕_SanteVet_Dogs.py", label="SantéVet Dogs", icon="🐕")
-    st.page_link("pages/9_📈_Alla2_Trading.py", label="Alla2 Trading", icon="📈")
-    st.page_link("pages/10_🤖_Job_Agent.py", label="Job Agent", icon="🤖")
+    st.page_link("pages/5_Schneider_Energy.py", label="Schneider Energy", icon="🔋")
+    st.page_link("pages/6_BackMarket_Segmentation.py", label="BackMarket Segment.", icon="👥")
+    st.page_link("pages/7_StackOverflow_NLP.py", label="StackOverflow NLP", icon="🏷️")
+    st.page_link("pages/8_SanteVet_Dogs.py", label="SantéVet Dogs", icon="🐕")
+    st.page_link("pages/9_Alla2_Trading.py", label="Alla2 Trading", icon="📈")
+    st.page_link("pages/10_Job_Agent.py", label="Job Agent", icon="🤖")
 
     st.divider()
 
@@ -152,26 +152,26 @@ def main():
             st.subheader("🔋 Prédiction Énergétique")
             st.caption("Schneider Electric | Régression | ✅ Démo active")
             st.markdown("Prédiction de consommation énergétique avec Random Forest")
-            st.page_link("pages/5_🔋_Schneider_Energy.py", label="Explorer →", icon="🔋")
+            st.page_link("pages/5_Schneider_Energy.py", label="Explorer →", icon="🔋")
 
         with st.container(border=True):
             st.subheader("🏷️ NLP Tag Suggestion")
             st.caption("Stack Overflow | NLP | ✅ Démo active")
             st.markdown("Classification multi-label avec BERT/USE")
-            st.page_link("pages/7_🏷️_StackOverflow_NLP.py", label="Explorer →", icon="🏷️")
+            st.page_link("pages/7_StackOverflow_NLP.py", label="Explorer →", icon="🏷️")
 
     with col2:
         with st.container(border=True):
             st.subheader("👥 Segmentation Client")
             st.caption("Back Market | Clustering | ✅ Démo active")
             st.markdown("Segmentation RFM avec KMeans")
-            st.page_link("pages/6_👥_BackMarket_Segmentation.py", label="Explorer →", icon="👥")
+            st.page_link("pages/6_BackMarket_Segmentation.py", label="Explorer →", icon="👥")
 
         with st.container(border=True):
             st.subheader("🐕 Classification Races")
             st.caption("SantéVet | Computer Vision | ✅ Démo active")
             st.markdown("Classification d'images avec ResNet50V2")
-            st.page_link("pages/8_🐕_SanteVet_Dogs.py", label="Explorer →", icon="🐕")
+            st.page_link("pages/8_SanteVet_Dogs.py", label="Explorer →", icon="🐕")
 
     # Ligne 3 - Projets personnels
     col1, col2 = st.columns(2)
@@ -181,14 +181,14 @@ def main():
             st.subheader("🤖 Job Agent")
             st.caption("Projet Personnel | Automation IA | ✅ Open Source")
             st.markdown("Agent autonome de recherche d'emploi avec scoring LLM (1,989 jobs)")
-            st.page_link("pages/10_🤖_Job_Agent.py", label="Explorer →", icon="🤖")
+            st.page_link("pages/10_Job_Agent.py", label="Explorer →", icon="🤖")
 
     with col2:
         with st.container(border=True):
             st.subheader("📈 Alla2 Trading")
             st.caption("Projet Personnel | Time Series | ✅ Démo active")
             st.markdown("Prédiction directionnelle BTC avec XGBoost (61% accuracy)")
-            st.page_link("pages/9_📈_Alla2_Trading.py", label="Explorer →", icon="📈")
+            st.page_link("pages/9_Alla2_Trading.py", label="Explorer →", icon="📈")
 
     st.divider()
 
