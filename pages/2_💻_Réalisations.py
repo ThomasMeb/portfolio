@@ -23,7 +23,7 @@ col1, col2 = st.columns([3, 1])
 with col2:
     filtre = st.selectbox(
         "Filtrer par type",
-        ["Tous", "Régression", "Clustering", "NLP", "Computer Vision", "Time Series"]
+        ["Tous", "Régression", "Clustering", "NLP", "Computer Vision", "Time Series", "Automation"]
     )
 
 st.divider()
@@ -192,6 +192,40 @@ with st.container(border=True):
 
 st.divider()
 
+# Projet 6 - Job Agent
+with st.container(border=True):
+    col1, col2 = st.columns([2, 1])
+
+    with col1:
+        st.subheader("🤖 Job Agent - Recherche d'Emploi Automatisée")
+        st.caption("Projet Personnel | Automation IA | ✅ Open Source")
+
+        st.markdown("""
+        **Contexte :** Agent autonome qui scrape, score et notifie
+        les offres d'emploi pertinentes en utilisant un LLM.
+
+        **Approche :**
+        - Scraping multi-source (5 plateformes, déduplication SHA256)
+        - Scoring IA avec DeepSeek LLM (reasoning + keywords)
+        - Notifications Telegram avec boutons d'action
+        - Sync automatique vers Notion
+
+        **Stack :** Python, AsyncIO, SQLite, DeepSeek API, Telegram Bot, Notion API, Streamlit
+        """)
+
+        col_btn1, col_btn2 = st.columns(2)
+        with col_btn1:
+            st.page_link("pages/10_🤖_Job_Agent.py", label="Voir le projet", icon="🤖")
+        with col_btn2:
+            st.link_button("Code GitHub", "https://github.com/ThomasMeb/job-agent")
+
+    with col2:
+        st.metric("Jobs scrapés", "1,989")
+        st.metric("Score >= 60", "612", delta="pertinents")
+        st.progress(61, text="Coût: $1.51 / $5.00 budget")
+
+st.divider()
+
 # Footer
-st.success("✅ **5 démos actives** : Tous les projets ML sont maintenant disponibles!")
+st.success("✅ **6 projets disponibles** dont 5 démos actives + 1 outil open source!")
 st.info("💡 **Tip :** Utilisez le menu latéral pour accéder aux démos interactives.")

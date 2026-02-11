@@ -29,6 +29,7 @@ def render_sidebar():
         st.page_link("pages/7_🏷️_StackOverflow_NLP.py", label="StackOverflow NLP", icon="🏷️")
         st.page_link("pages/8_🐕_SanteVet_Dogs.py", label="SantéVet Dogs", icon="🐕")
         st.page_link("pages/9_📈_Alla2_Trading.py", label="Alla2 Trading", icon="📈")
+        st.page_link("pages/10_🤖_Job_Agent.py", label="Job Agent", icon="🤖")
 
         st.divider()
 

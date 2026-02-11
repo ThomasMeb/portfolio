@@ -100,6 +100,7 @@ with st.sidebar:
     st.page_link("pages/7_🏷️_StackOverflow_NLP.py", label="StackOverflow NLP", icon="🏷️")
     st.page_link("pages/8_🐕_SanteVet_Dogs.py", label="SantéVet Dogs", icon="🐕")
     st.page_link("pages/9_📈_Alla2_Trading.py", label="Alla2 Trading", icon="📈")
+    st.page_link("pages/10_🤖_Job_Agent.py", label="Job Agent", icon="🤖")
 
     st.divider()
 
@@ -171,6 +172,23 @@ def main():
             st.caption("SantéVet | Computer Vision | ✅ Démo active")
             st.markdown("Classification d'images avec ResNet50V2")
             st.page_link("pages/8_🐕_SanteVet_Dogs.py", label="Explorer →", icon="🐕")
+
+    # Ligne 3 - Projets personnels
+    col1, col2 = st.columns(2)
+
+    with col1:
+        with st.container(border=True):
+            st.subheader("🤖 Job Agent")
+            st.caption("Projet Personnel | Automation IA | ✅ Open Source")
+            st.markdown("Agent autonome de recherche d'emploi avec scoring LLM (1,989 jobs)")
+            st.page_link("pages/10_🤖_Job_Agent.py", label="Explorer →", icon="🤖")
+
+    with col2:
+        with st.container(border=True):
+            st.subheader("📈 Alla2 Trading")
+            st.caption("Projet Personnel | Time Series | ✅ Démo active")
+            st.markdown("Prédiction directionnelle BTC avec XGBoost (61% accuracy)")
+            st.page_link("pages/9_📈_Alla2_Trading.py", label="Explorer →", icon="📈")
 
     st.divider()
 
