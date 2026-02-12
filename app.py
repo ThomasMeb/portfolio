@@ -100,7 +100,7 @@ with st.sidebar:
     st.page_link("pages/7_StackOverflow_NLP.py", label="StackOverflow NLP", icon="🏷️")
     st.page_link("pages/8_SanteVet_Dogs.py", label="SantéVet Dogs", icon="🐕")
     st.page_link("pages/9_Alla2_Trading.py", label="Alla2 Trading", icon="📈")
-    st.page_link("pages/10_Job_Agent.py", label="Job Agent", icon="🤖")
+    st.page_link("pages/10_Job_Agent.py", label="JobScout", icon="🔍")
 
     st.divider()
 
@@ -178,10 +178,10 @@ def main():
 
     with col1:
         with st.container(border=True):
-            st.subheader("🤖 Job Agent")
+            st.subheader("🔍 JobScout")
             st.caption("Projet Personnel | Automation IA | ✅ Open Source")
             st.markdown("Agent autonome de recherche d'emploi avec scoring LLM (1,989 jobs)")
-            st.page_link("pages/10_Job_Agent.py", label="Explorer →", icon="🤖")
+            st.page_link("pages/10_Job_Agent.py", label="Explorer →", icon="🔍")
 
     with col2:
         with st.container(border=True):

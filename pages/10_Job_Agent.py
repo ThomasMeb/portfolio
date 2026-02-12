@@ -1,5 +1,5 @@
 """
-Page Projet - Job Agent
+Page Projet - JobScout
 Agent autonome de recherche d'emploi avec scoring IA
 """
 
@@ -7,14 +7,14 @@ import streamlit as st
 from components import render_sidebar
 
 st.set_page_config(
-    page_title="Job Agent | Thomas Portfolio",
+    page_title="JobScout | Thomas Portfolio",
     page_icon="🤖",
     layout="wide"
 )
 
 render_sidebar()
 
-st.title("🤖 Job Agent")
+st.title("🔍 JobScout")
 st.caption("Agent autonome de recherche d'emploi avec scoring IA")
 
 st.divider()
@@ -32,7 +32,7 @@ with col1:
     scruter manuellement des dizaines de plateformes, évaluer la pertinence
     de chaque offre, et préparer des candidatures personnalisées.
 
-    **Job Agent** automatise l'intégralité du pipeline : du scraping
+    **JobScout** automatise l'intégralité du pipeline : du scraping
     de 5+ sources au scoring intelligent par LLM, en passant par les
     notifications Telegram et le suivi dans Notion.
     """)
@@ -182,7 +182,7 @@ col1, col2, col3 = st.columns([1, 2, 1])
 with col2:
     st.link_button(
         "Voir le code sur GitHub",
-        "https://github.com/ThomasMeb/job-agent",
+        "https://github.com/ThomasMeb/JobScout",
         type="primary",
         use_container_width=True,
     )

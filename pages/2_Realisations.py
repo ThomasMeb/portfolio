@@ -192,12 +192,12 @@ with st.container(border=True):
 
 st.divider()
 
-# Projet 6 - Job Agent
+# Projet 6 - JobScout
 with st.container(border=True):
     col1, col2 = st.columns([2, 1])
 
     with col1:
-        st.subheader("🤖 Job Agent - Recherche d'Emploi Automatisée")
+        st.subheader("🔍 JobScout - Recherche d'Emploi Automatisée")
         st.caption("Projet Personnel | Automation IA | ✅ Open Source")
 
         st.markdown("""
@@ -215,9 +215,9 @@ with st.container(border=True):
 
         col_btn1, col_btn2 = st.columns(2)
         with col_btn1:
-            st.page_link("pages/10_Job_Agent.py", label="Voir le projet", icon="🤖")
+            st.page_link("pages/10_Job_Agent.py", label="Voir le projet", icon="🔍")
         with col_btn2:
-            st.link_button("Code GitHub", "https://github.com/ThomasMeb/job-agent")
+            st.link_button("Code GitHub", "https://github.com/ThomasMeb/JobScout")
 
     with col2:
         st.metric("Jobs scrapés", "1,989")
