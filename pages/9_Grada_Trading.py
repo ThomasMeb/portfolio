@@ -238,15 +238,17 @@ with tab_dashboard:
                     for c in candles
                 ]
                 c_close = [int(c["close"]) / WEI for c in candles]
+                y_min = min(c_close)
+                y_max = max(c_close)
+                y_pad = max((y_max - y_min) * 0.3, 0.0002)
                 fig_vault.add_trace(go.Scatter(
                     x=c_dates, y=c_close,
                     name="Token Price (GRADA)",
                     line=dict(color="#22c55e", width=2),
-                    fill="tozeroy",
-                    fillcolor="rgba(34, 197, 94, 0.1)",
                 ))
                 fig_vault.update_layout(
                     yaxis_title="Token Price ($)",
+                    yaxis_range=[y_min - y_pad, y_max + y_pad],
                     xaxis_title="",
                     height=250,
                     margin=dict(l=0, r=0, t=10, b=0),
