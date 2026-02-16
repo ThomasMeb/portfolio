@@ -160,35 +160,37 @@ with st.container(border=True):
 
 st.divider()
 
-# Projet 5 - Alla2 ✅ DÉMO ACTIVE
+# Projet 5 - Grada ✅ LIVE TRADING
 with st.container(border=True):
     col1, col2 = st.columns([2, 1])
 
     with col1:
-        st.subheader("📈 Prédiction Trading BTC")
-        st.caption("Projet Personnel | Time Series - Trading | ✅ Démo disponible")
+        st.subheader("📈 Grada - Prédiction & Trading BTC")
+        st.caption("Projet Personnel | Time Series - Live Trading | ✅ Vault dHEDGE actif")
 
         st.markdown("""
-        **Contexte :** Prédiction de la direction du prix Bitcoin (hausse/baisse).
+        **Contexte :** Prédiction de la direction du BTC à J+1
+        et exécution automatisée via un vault dHEDGE sur Polygon.
 
         **Approche :**
-        - 20+ indicateurs techniques (RSI, MACD, Bollinger, etc.)
-        - XGBoost Classifier optimisé
-        - Métrique personnalisée "earn_metric"
+        - 22 features (14 techniques + 8 macro-économiques)
+        - XGBoost walk-forward sur 1500 jours glissants
+        - Position sizing optimisé (EarningStrategy)
+        - Execution on-chain via KyberSwap + dHEDGE SDK
 
-        **Stack :** Python, XGBoost, scikit-learn, Pandas
+        **Stack :** Python, XGBoost, TypeScript, dHEDGE SDK, Polygon
         """)
 
         col_btn1, col_btn2 = st.columns(2)
         with col_btn1:
-            st.page_link("pages/9_Alla2_Trading.py", label="🎮 Démo interactive", icon="📈")
+            st.page_link("pages/9_Grada_Trading.py", label="Voir le dashboard", icon="📈")
         with col_btn2:
-            st.link_button("📂 Code GitHub", "https://github.com/ThomasMeb/tradebtcai")
+            st.link_button("📂 Code GitHub", "https://github.com/ThomasMeb/Grada")
 
     with col2:
-        st.metric("Accuracy", "61%", delta="+11% vs random")
-        st.metric("Earn Metric", "1.10")
-        st.progress(61, text="Précision directionnelle")
+        st.metric("Accuracy", "61.6%", delta="+9.3% vs baseline")
+        st.metric("Sharpe Ratio", "3.37")
+        st.progress(62, text="Précision directionnelle")
 
 st.divider()
 

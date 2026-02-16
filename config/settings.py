@@ -50,14 +50,14 @@ PROJECTS = {
         "github": "",
         "enabled": False,
     },
-    "alla2": {
-        "title": "Prédiction Trading",
+    "grada": {
+        "title": "Grada Trading",
         "subtitle": "Projet Personnel",
         "type": "Time Series",
-        "description": "Prédiction de séries temporelles financières",
-        "path": "../Alla2",
-        "github": "",
-        "enabled": False,
+        "description": "Prédiction BTC + vault dHEDGE automatisé",
+        "path": "../Grada",
+        "github": "https://github.com/ThomasMeb/Grada",
+        "enabled": True,
     },
 }
 

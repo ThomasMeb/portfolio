@@ -99,7 +99,7 @@ with st.sidebar:
     st.page_link("pages/6_BackMarket_Segmentation.py", label="BackMarket Segment.", icon="👥")
     st.page_link("pages/7_StackOverflow_NLP.py", label="StackOverflow NLP", icon="🏷️")
     st.page_link("pages/8_SanteVet_Dogs.py", label="SantéVet Dogs", icon="🐕")
-    st.page_link("pages/9_Alla2_Trading.py", label="Alla2 Trading", icon="📈")
+    st.page_link("pages/9_Grada_Trading.py", label="Grada Trading", icon="📈")
     st.page_link("pages/10_Job_Agent.py", label="JobScout", icon="🔍")
 
     st.divider()
@@ -185,10 +185,10 @@ def main():
 
     with col2:
         with st.container(border=True):
-            st.subheader("📈 Alla2 Trading")
-            st.caption("Projet Personnel | Time Series | ✅ Démo active")
-            st.markdown("Prédiction directionnelle BTC avec XGBoost (61% accuracy)")
-            st.page_link("pages/9_Alla2_Trading.py", label="Explorer →", icon="📈")
+            st.subheader("📈 Grada Trading")
+            st.caption("Projet Personnel | Time Series | ✅ Live Trading")
+            st.markdown("Prédiction BTC + vault dHEDGE automatisé (61% accuracy, Sharpe 3.37)")
+            st.page_link("pages/9_Grada_Trading.py", label="Explorer →", icon="📈")
 
     st.divider()
 
