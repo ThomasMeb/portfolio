@@ -7,6 +7,11 @@ import streamlit as st
 
 def render_sidebar():
     """Affiche la sidebar avec photo et liens"""
+    # Masquer la navigation native Streamlit (affiche "app" en minuscule)
+    st.markdown(
+        "<style>[data-testid='stSidebarNav']{display:none}</style>",
+        unsafe_allow_html=True,
+    )
     with st.sidebar:
         st.image("assets/photo_thomas.png", width=100)
         st.title("Thomas")
