@@ -1,12 +1,13 @@
 """
 Page Projet Grada - Bitcoin Trading Prediction & Automated Execution
-Dashboard avec données réelles de backtest walk-forward
+Dashboard avec données réelles de backtest walk-forward + vault dHEDGE live
 """
 
 import json
 from pathlib import Path
 
 import plotly.graph_objects as go
+import requests
 import streamlit as st
 from components import render_sidebar
 
@@ -39,6 +40,44 @@ def load_backtest_data():
 
 
 data = load_backtest_data()
+
+VAULT_ADDRESS = "0x27462cd4f35d4b3d118eaa85acb61a2cb9ba4e08"
+DHEDGE_API = "https://api-v2.dhedge.org/graphql"
+
+
+@st.cache_data(ttl=600)
+def load_vault_data():
+    """Fetch live vault data from dHEDGE GraphQL API."""
+    query = """
+    {
+      fund(address: "%s") {
+        name
+        tokenPrice
+        totalValue
+        performanceMetrics {
+          week
+          month
+          year
+        }
+      }
+      tokenPriceCandles(address: "%s", period: "1m", interval: "1h") {
+        timestamp
+        open
+        close
+        high
+        low
+      }
+    }
+    """ % (VAULT_ADDRESS, VAULT_ADDRESS)
+    try:
+        resp = requests.post(DHEDGE_API, json={"query": query}, timeout=10)
+        resp.raise_for_status()
+        return resp.json().get("data")
+    except Exception:
+        return None
+
+
+vault = load_vault_data()
 
 # =============================================================================
 # TABS
@@ -135,18 +174,25 @@ with tab_dashboard:
 
         st.plotly_chart(fig, use_container_width=True)
 
-        # --- Allocation Area Chart ---
-        st.subheader("Allocation au fil du temps")
+        # --- Allocation moyenne mobile ---
+        st.subheader("Allocation moyenne (30 jours glissants)")
+
+        raw_alloc = [a * 100 for a in curve["allocations"]]
+        window = 30
+        smoothed = []
+        for i in range(len(raw_alloc)):
+            start = max(0, i - window + 1)
+            smoothed.append(sum(raw_alloc[start:i + 1]) / (i - start + 1))
 
         fig_alloc = go.Figure()
 
         fig_alloc.add_trace(go.Scatter(
             x=curve["dates"],
-            y=[a * 100 for a in curve["allocations"]],
+            y=smoothed,
             fill="tozeroy",
-            name="% WBTC",
-            line=dict(color="#f59e0b", width=1),
-            fillcolor="rgba(245, 158, 11, 0.3)",
+            name="Allocation WBTC (MA 30j)",
+            line=dict(color="#f59e0b", width=2),
+            fillcolor="rgba(245, 158, 11, 0.2)",
         ))
 
         fig_alloc.add_hline(y=50, line_dash="dot", line_color="#94a3b8",
@@ -154,7 +200,7 @@ with tab_dashboard:
 
         fig_alloc.update_layout(
             yaxis_title="Allocation WBTC (%)",
-            yaxis_range=[0, 105],
+            yaxis_range=[0, 100],
             xaxis_title="",
             height=300,
             margin=dict(l=0, r=0, t=10, b=0),
@@ -162,6 +208,48 @@ with tab_dashboard:
         )
 
         st.plotly_chart(fig_alloc, use_container_width=True)
+
+        # --- Vault Live ---
+        if vault and vault.get("fund"):
+            st.divider()
+            st.subheader("Vault dHEDGE — Live")
+
+            fund = vault["fund"]
+            token_price = float(fund["tokenPrice"])
+            total_value = float(fund["totalValue"])
+            perf = fund.get("performanceMetrics", {})
+
+            v1, v2, v3, v4 = st.columns(4)
+            v1.metric("Token Price", f"${token_price:.4f}")
+            v2.metric("AUM", f"${total_value:.2f}")
+            week_pct = float(perf.get("week", 0)) if perf.get("week") else 0
+            v3.metric("7j", f"{week_pct:+.2f}%")
+            month_pct = float(perf.get("month", 0)) if perf.get("month") else 0
+            v4.metric("30j", f"{month_pct:+.2f}%")
+
+            # Token price chart from candles
+            candles = vault.get("tokenPriceCandles")
+            if candles and len(candles) > 2:
+                fig_vault = go.Figure()
+                c_dates = [c["timestamp"] for c in candles]
+                c_close = [float(c["close"]) for c in candles]
+                fig_vault.add_trace(go.Scatter(
+                    x=c_dates, y=c_close,
+                    name="Token Price (GRADA)",
+                    line=dict(color="#22c55e", width=2),
+                    fill="tozeroy",
+                    fillcolor="rgba(34, 197, 94, 0.1)",
+                ))
+                fig_vault.update_layout(
+                    yaxis_title="Token Price ($)",
+                    xaxis_title="",
+                    height=250,
+                    margin=dict(l=0, r=0, t=10, b=0),
+                    showlegend=False,
+                )
+                st.plotly_chart(fig_vault, use_container_width=True)
+
+            st.caption("Données live via dHEDGE GraphQL API — rafraîchies toutes les 10 min")
 
 # =============================================================================
 # TAB 2: PROJET
