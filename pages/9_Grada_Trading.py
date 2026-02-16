@@ -4,6 +4,7 @@ Dashboard avec données réelles de backtest walk-forward + vault dHEDGE live
 """
 
 import json
+from datetime import datetime, timezone
 from pathlib import Path
 
 import plotly.graph_objects as go
@@ -45,6 +46,9 @@ VAULT_ADDRESS = "0x27462cd4f35d4b3d118eaa85acb61a2cb9ba4e08"
 DHEDGE_API = "https://api-v2.dhedge.org/graphql"
 
 
+WEI = 1e18
+
+
 @st.cache_data(ttl=600)
 def load_vault_data():
     """Fetch live vault data from dHEDGE GraphQL API."""
@@ -64,8 +68,6 @@ def load_vault_data():
         timestamp
         open
         close
-        high
-        low
       }
     }
     """ % (VAULT_ADDRESS, VAULT_ADDRESS)
@@ -215,24 +217,27 @@ with tab_dashboard:
             st.subheader("Vault dHEDGE — Live")
 
             fund = vault["fund"]
-            token_price = float(fund["tokenPrice"])
-            total_value = float(fund["totalValue"])
+            token_price = int(fund["tokenPrice"]) / WEI
+            total_value = int(fund["totalValue"]) / WEI
             perf = fund.get("performanceMetrics", {})
 
             v1, v2, v3, v4 = st.columns(4)
             v1.metric("Token Price", f"${token_price:.4f}")
             v2.metric("AUM", f"${total_value:.2f}")
-            week_pct = float(perf.get("week", 0)) if perf.get("week") else 0
+            week_pct = (int(perf["week"]) / WEI - 1) * 100 if perf.get("week") else 0
             v3.metric("7j", f"{week_pct:+.2f}%")
-            month_pct = float(perf.get("month", 0)) if perf.get("month") else 0
+            month_pct = (int(perf["month"]) / WEI - 1) * 100 if perf.get("month") else 0
             v4.metric("30j", f"{month_pct:+.2f}%")
 
             # Token price chart from candles
             candles = vault.get("tokenPriceCandles")
             if candles and len(candles) > 2:
                 fig_vault = go.Figure()
-                c_dates = [c["timestamp"] for c in candles]
-                c_close = [float(c["close"]) for c in candles]
+                c_dates = [
+                    datetime.fromtimestamp(int(c["timestamp"]) / 1000, tz=timezone.utc)
+                    for c in candles
+                ]
+                c_close = [int(c["close"]) / WEI for c in candles]
                 fig_vault.add_trace(go.Scatter(
                     x=c_dates, y=c_close,
                     name="Token Price (GRADA)",
