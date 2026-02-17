@@ -69,8 +69,20 @@ def load_vault_data():
         open
         close
       }
+      tradeEvents(
+        filter: { fundAddress: "%s" }
+        limit: 20
+        orderBy: "timestamp"
+        orderDirection: "desc"
+      ) {
+        txHash
+        timestamp
+        displayType
+        income { assetName displayAmount }
+        outcome { assetName displayAmount }
+      }
     }
-    """ % (VAULT_ADDRESS, VAULT_ADDRESS)
+    """ % (VAULT_ADDRESS, VAULT_ADDRESS, VAULT_ADDRESS)
     try:
         resp = requests.post(DHEDGE_API, json={"query": query}, timeout=10)
         resp.raise_for_status()
@@ -256,6 +268,59 @@ with tab_dashboard:
                 )
                 st.plotly_chart(fig_vault, use_container_width=True)
 
+            # --- Trade History ---
+            trades = vault.get("tradeEvents", [])
+            if trades:
+                st.markdown("")
+                st.markdown("**Trades récents**")
+
+                rows = []
+                for t in trades:
+                    ts = datetime.fromtimestamp(int(t["timestamp"]), tz=timezone.utc)
+                    income = t.get("income") or []
+                    outcome = t.get("outcome") or []
+
+                    # Determine direction: selling USDC → buying WBTC
+                    out_names = [o["assetName"] for o in outcome]
+                    in_names = [i["assetName"] for i in income]
+
+                    if "USDC" in out_names and "WBTC" in in_names:
+                        direction = "BUY WBTC"
+                        wbtc_amt = next((i["displayAmount"] for i in income if i["assetName"] == "WBTC"), 0)
+                        usdc_amt = next((o["displayAmount"] for o in outcome if o["assetName"] == "USDC"), 0)
+                        detail = f"{usdc_amt:.2f} USDC -> {wbtc_amt:.8f} WBTC"
+                    elif "WBTC" in out_names and "USDC" in in_names:
+                        direction = "SELL WBTC"
+                        wbtc_amt = next((o["displayAmount"] for o in outcome if o["assetName"] == "WBTC"), 0)
+                        usdc_amt = next((i["displayAmount"] for i in income if i["assetName"] == "USDC"), 0)
+                        detail = f"{wbtc_amt:.8f} WBTC -> {usdc_amt:.2f} USDC"
+                    else:
+                        direction = t.get("displayType", "Trade")
+                        detail = ", ".join(
+                            [f"{o['displayAmount']} {o['assetName']}" for o in outcome]
+                            + [f"-> {i['displayAmount']} {i['assetName']}" for i in income]
+                        )
+
+                    tx_short = t["txHash"][:10] + "..."
+                    tx_link = f"https://polygonscan.com/tx/{t['txHash']}"
+                    rows.append({
+                        "Date": ts.strftime("%Y-%m-%d %H:%M UTC"),
+                        "Direction": direction,
+                        "Détail": detail,
+                        "TX": tx_short,
+                        "_link": tx_link,
+                    })
+
+                # Display as markdown table with links
+                header = "| Date | Direction | Détail | TX |"
+                separator = "|------|-----------|--------|-----|"
+                table_rows = [header, separator]
+                for r in rows:
+                    table_rows.append(
+                        f"| {r['Date']} | {r['Direction']} | {r['Détail']} | [{r['TX']}]({r['_link']}) |"
+                    )
+                st.markdown("\n".join(table_rows))
+
             st.caption("Données live via dHEDGE GraphQL API — rafraîchies toutes les 10 min")
 
 # =============================================================================
@@ -325,13 +390,15 @@ with tab_projet:
 
         st.markdown("### Pipeline quotidien")
         st.code("""
-00:30 UTC — Python
+GitHub Actions — 00:30 UTC
+
+  Python:
   1. Fetch données BTC + macro
   2. Feature engineering (22)
   3. Train XGBoost (1500j)
   4. Prédire proba → signal.json
 
-01:00 UTC — TypeScript
+  TypeScript:
   5. Lire signal.json
   6. Lire position vault
   7. Calculer swap nécessaire
@@ -385,11 +452,11 @@ Python (cron 00:30 UTC)              TypeScript (cron 01:00 UTC)
     with col3:
         st.markdown("""
         **Infrastructure**
-        - systemd timer (cron)
+        - GitHub Actions (cron quotidien)
         - Telegram Bot (monitoring)
-        - WSL2 / Linux
-        - Node.js 25
-        - Python 3.12 venv
+        - Polygon RPC (PublicNode)
+        - Node.js 22 + Python 3.12
+        - dHEDGE vault on-chain
         """)
 
     st.divider()
