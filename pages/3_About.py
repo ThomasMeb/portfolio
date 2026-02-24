@@ -150,10 +150,11 @@ with col1:
 
 with col2:
     st.markdown("""
-    **Entrepreneuriat :**
+    **Entrepreneuriat & Communauté :**
     - 🚀 egir.app en production
     - 📈 Clients actifs
     - 💡 Intégration IA réussie
+    - 🐦 [14k+ abonnés sur X/Twitter](https://x.com/_elmeb_) — veille ML/produit
     """)
 
 st.divider()

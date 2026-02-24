@@ -36,7 +36,7 @@ with col1:
 
     st.subheader("🔗 Réseaux")
 
-    col_a, col_b, col_c = st.columns(3)
+    col_a, col_b, col_c, col_d = st.columns(4)
 
     with col_a:
         st.link_button("LinkedIn", "https://linkedin.com/in/thomasmebarki", use_container_width=True)
@@ -45,6 +45,9 @@ with col1:
         st.link_button("GitHub", "https://github.com/ThomasMeb", use_container_width=True)
 
     with col_c:
+        st.link_button("X / Twitter", "https://x.com/_elmeb_", use_container_width=True)
+
+    with col_d:
         st.link_button("egir.app", "https://egir.app", use_container_width=True)
 
 with col2:
