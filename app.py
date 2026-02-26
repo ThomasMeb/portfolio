@@ -160,7 +160,7 @@ def main():
         with st.container(border=True):
             st.subheader("📈 Grada Trading")
             st.caption("Projet Personnel | Time Series | ✅ Live Trading")
-            st.markdown("Prédiction BTC + vault dHEDGE automatisé (61% accuracy, Sharpe 3.37)")
+            st.markdown("Prédiction BTC via ensemble 4 modèles ML + Deep Learning, vault dHEDGE automatisé")
             st.page_link("pages/9_Grada_Trading.py", label="Explorer →", icon="📈")
 
     st.divider()

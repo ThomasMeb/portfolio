@@ -21,7 +21,7 @@ st.set_page_config(
 render_sidebar()
 
 st.title("📈 Grada - BTC Prediction & Trading")
-st.caption("Prédiction directionnelle BTC avec XGBoost + exécution automatisée via vault dHEDGE")
+st.caption("Prédiction directionnelle BTC avec ensemble ML + Deep Learning, exécution automatisée via vault dHEDGE")
 
 st.divider()
 
@@ -334,13 +334,14 @@ with tab_projet:
         st.header("Méthodologie")
         st.markdown("""
         **Walk-Forward Validation** sur fenêtre glissante de 1500 jours :
-        chaque jour, le modèle est ré-entraîné sur les 1500 jours précédents
-        et prédit la direction du BTC pour le lendemain.
+        chaque jour, les 4 modèles sont ré-entraînés sur les 1500 jours précédents
+        et prédisent la direction du BTC pour le lendemain.
 
         | Composant | Détail |
         |-----------|--------|
-        | **Modèle** | XGBoost Classifier (max\\_depth=5, 200 estimators) |
-        | **Features** | 22 = 14 techniques + 8 macro-économiques |
+        | **Modèle** | Ensemble : XGBoost + LightGBM + CatBoost + GRU |
+        | **Features** | 30 = 14 techniques + 8 macro + 3 régime + 5 feedback |
+        | **Deep Learning** | GRU 2 couches + Attention Temporelle + MC Dropout |
         | **Cible** | Direction du prix BTC à J+1 (hausse/baisse) |
         | **Sizing** | EarningStrategy (threshold 5%, deadzone 5%) |
         | **Frais** | 0.1% par portion rééquilibrée |
@@ -350,19 +351,22 @@ with tab_projet:
 
         st.header("Découvertes clés")
         st.markdown("""
-        - **Macro features (+269% earning)** : DXY, S&P 500, VIX et Gold
-          apportent un signal fort. L'ajout de 8 features macro
-          a multiplié par 3.7x le earning metric.
+        - **Ensemble 4 modèles (+14.4% edge)** : la combinaison pondérée
+          XGBoost (35%), LightGBM (25%), CatBoost (25%) et GRU (15%)
+          surpasse chaque modèle individuel.
 
-        - **On-chain features (-18.6%)** : MVRV, exchange flows, hash rate, SOPR...
-          toutes dégradent les performances. Le bruit l'emporte sur le signal.
+        - **GRU avec attention temporelle** : capture les dépendances
+          séquentielles sur 30 jours que les arbres ne voient pas.
+          MC Dropout (20 passes) estime l'incertitude et réduit
+          dynamiquement le poids du GRU quand il doute.
 
-        - **Calibration des probabilités** : XGBoost surpasse LightGBM et CatBoost
-          non pas par l'accuracy (+0.2%) mais par la qualité de ses probabilités,
-          ce qui optimise le position sizing.
+        - **Regime features** : volatility\_regime, trend\_strength et
+          volume\_acceleration permettent au modèle de détecter
+          implicitement les changements de régime de marché.
 
-        - **Fee drag** : le levier qui compte est le fee rate, pas la fréquence.
-          Break-even à ~0.75% de frais par trade.
+        - **Feedback features** : le modèle reçoit ses propres
+          performances récentes (accuracy 5/10/20j, erreurs consécutives)
+          pour moduler sa confiance.
         """)
 
     with col2:
@@ -394,16 +398,17 @@ GitHub Actions — 00:30 UTC
 
   Python:
   1. Fetch données BTC + macro
-  2. Feature engineering (22)
-  3. Train XGBoost (1500j)
-  4. Prédire proba → signal.json
+  2. Feature engineering (30)
+  3. Train 3 modèles trees (1500j)
+  4. Train GRU (30j lookback)
+  5. Ensemble pondéré → signal.json
 
   TypeScript:
-  5. Lire signal.json
-  6. Lire position vault
-  7. Calculer swap nécessaire
-  8. Exécuter via dHEDGE SDK
-  9. Notification Telegram
+  6. Lire signal.json
+  7. Lire position vault
+  8. Calculer swap nécessaire
+  9. Exécuter via dHEDGE SDK
+  10. Notification Telegram
         """, language="text")
 
 # =============================================================================
@@ -414,15 +419,16 @@ with tab_stack:
     st.header("Architecture")
 
     st.code("""
-Python (cron 00:30 UTC)              TypeScript (cron 01:00 UTC)
-┌─────────────────────┐              ┌─────────────────────────┐
-│ generate_signal.py   │              │ hedge-bot/src/index.ts  │
-│  1. Fetch données    │  signal.json │  1. Lire signal.json    │
-│  2. Features 22      │ ──────────► │  2. Lire position vault │
-│  3. Train XGBoost    │              │  3. Calculer swap       │
-│  4. Predict proba    │              │  4. Exécuter via SDK    │
-│  5. Écrire signal    │              │  5. Logger résultat     │
-└─────────────────────┘              └─────────────────────────┘
+Python (cron 00:30 UTC)                TypeScript (cron 01:00 UTC)
+┌───────────────────────┐              ┌─────────────────────────┐
+│ generate_signal.py     │              │ hedge-bot/src/index.ts  │
+│  1. Fetch données      │  signal.json │  1. Lire signal.json    │
+│  2. Features 30        │ ──────────► │  2. Lire position vault │
+│  3. Train 3 trees      │              │  3. Calculer swap       │
+│  4. Train GRU (30j)    │              │  4. Exécuter via SDK    │
+│  5. Ensemble pondéré   │              │  5. Logger résultat     │
+│  6. Écrire signal      │              │                         │
+└───────────────────────┘              └─────────────────────────┘
     """, language="text")
 
     st.divider()
@@ -432,11 +438,11 @@ Python (cron 00:30 UTC)              TypeScript (cron 01:00 UTC)
     with col1:
         st.markdown("""
         **ML & Data (Python)**
-        - XGBoost 2.0
+        - XGBoost, LightGBM, CatBoost
+        - PyTorch (GRU + Attention)
         - scikit-learn (StandardScaler)
         - Pandas, NumPy
         - Yahoo Finance (données)
-        - Walk-forward validation
         """)
 
     with col2:

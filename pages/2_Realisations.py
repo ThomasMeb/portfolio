@@ -173,12 +173,12 @@ with st.container(border=True):
         et exécution automatisée via un vault dHEDGE sur Polygon.
 
         **Approche :**
-        - 22 features (14 techniques + 8 macro-économiques)
-        - XGBoost walk-forward sur 1500 jours glissants
-        - Position sizing optimisé (EarningStrategy)
-        - Execution on-chain via KyberSwap + dHEDGE SDK
+        - 30 features (14 techniques + 8 macro + 3 régime + 5 feedback)
+        - Ensemble 4 modèles : XGBoost, LightGBM, CatBoost + GRU (Deep Learning)
+        - GRU avec attention temporelle et MC Dropout (estimation d'incertitude)
+        - Walk-forward sur 1500 jours glissants, validation 90 jours
 
-        **Stack :** Python, XGBoost, TypeScript, dHEDGE SDK, Polygon
+        **Stack :** Python, XGBoost, LightGBM, CatBoost, PyTorch, TypeScript, dHEDGE SDK
         """)
 
         col_btn1, col_btn2 = st.columns(2)
@@ -188,9 +188,9 @@ with st.container(border=True):
             st.link_button("📂 Code GitHub", "https://github.com/ThomasMeb/Grada")
 
     with col2:
-        st.metric("Accuracy", "61.6%", delta="+9.3% vs baseline")
-        st.metric("Sharpe Ratio", "3.37")
-        st.progress(62, text="Précision directionnelle")
+        st.metric("Accuracy", "66.7%", delta="+14.4% vs baseline")
+        st.metric("Modèles", "4", delta="ensemble")
+        st.progress(67, text="Précision directionnelle")
 
 st.divider()
 
